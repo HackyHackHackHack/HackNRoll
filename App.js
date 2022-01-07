@@ -35,7 +35,7 @@ const AuthStack = () => {
     return (
         <Stack.Navigator initialRouteName={routeName}>
             <Stack.Screen
-                name="Login "
+                name="Login  askdalsd"
                 component={LoginScreen}
                 options={{ header: () => null }}
             />
