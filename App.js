@@ -1,4 +1,4 @@
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,11 +13,19 @@ export default function App() {
 
     return (
         <SafeAreaView>
-            <TextInput
-                value={text}
-                onChangeText={text => setText(text)}
+
+            <TextInput style ={styles.input} value={text} multiline='true' onChangeText={setText}/>
+            <Button
+              title="WUPF"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+              style={styles.button}
             />
         </SafeAreaView>
+
+        
+
+
             
         
         
@@ -25,10 +33,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    input: {
+      top: 50,
+      height: 200,
+      borderWidth: 1,
+      padding: 10,
+      marginHorizontal:12,
+      marginBottom: 50
+    },
+
+    
+
+
+  });
