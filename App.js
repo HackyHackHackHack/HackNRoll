@@ -29,13 +29,13 @@ const AuthStack = () => {
     } else if (isFirstLaunch === true) {
         routeName = 'Signup';
     } else {
-        routeName = 'Login';
+        routeName = 'Login ';
     }
 
     return (
         <Stack.Navigator initialRouteName={routeName}>
             <Stack.Screen
-                name="Login"
+                name="Login "
                 component={LoginScreen}
                 options={{ header: () => null }}
             />
