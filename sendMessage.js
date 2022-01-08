@@ -1,14 +1,16 @@
 // function to post API request
 
 import axios from 'axios';
+import { sms } from './sms';
 const baseUrl = 'https://api.callmebot.com';
 
-export const sendMessage = (username, message) => {
-    return sendTelegramMessage(username, message) && makeTelegramCall(username, message);
+export const sendMessage = (user, username, message, number) => {
+    console.log('HERE'+number);
+    return sendTelegramMessage(user, username, message) && makeTelegramCall(user, username, message) && sms(number, message);
 }
 
-export const sendTelegramMessage = (username, message) => {
-    const url = `text.php?user=${username}&text=MEOW from ${username}: ${message}`;
+export const sendTelegramMessage = (currentUser, username, message) => {
+    const url = `text.php?user=${username}&text=MEOW from ${currentUser}: ${message}`;
     return axios
                     .get(`${baseUrl}/${url}`)
                     .then(response => {
@@ -21,8 +23,8 @@ export const sendTelegramMessage = (username, message) => {
                     });
 };
 
-export const makeTelegramCall = (username, message) => {
-    const url = `start.php?user=${username}&text=${encodeURI(`MEOW from ${username} ${message}`)}&rpt=6`;
+export const makeTelegramCall = (currentUser, username, message) => {
+    const url = `start.php?user=${username}&text=${encodeURI(`MEOW from ${currentUser} ${message}`)}&rpt=6`;
     return axios
         .get(`${baseUrl}/${url}`)
         .then(response => {

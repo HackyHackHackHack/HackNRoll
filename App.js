@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { View, Text, Button, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -8,16 +8,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { meow } from "./Meow";
 import { styles } from "./styles";
 import { Message } from "./sms";
-=======
-import { View, Text, Button, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { meow } from './Meow';
-import { styles } from './styles';
->>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
+
 
 const Stack = createStackNavigator();
 
@@ -26,51 +17,8 @@ const SETUP_INSTRUCTIONS_2 =
   "\nTo Start, follow the link below to authenticate this\nCallMeBot on Telegram to allow your phone to receive calls and telegram texts\n\nOnce done, come back here and click on Proceed!";
 
 export default function App() {
-<<<<<<< HEAD
   const openAuthSiteInBrowser = () =>
     WebBrowser.openBrowserAsync("https://api2.callmebot.com/txt/login.php");
-
-  const setup = (props) => {
-    return (
-      <ScrollView style={{ flex: 1, marginTop: "20%" }}>
-        <View style={{ marginTop: "2%", marginBottom: "2%" }}>
-          <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
-          <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
-          <Button
-            title="Authenticate"
-            color="#841584"
-            onPress={openAuthSiteInBrowser}
-          />
-        </View>
-        <Button
-          title="Proceed"
-          color="#841584"
-          onPress={() => props.navigation.navigate("meow")}
-        />
-      </ScrollView>
-    );
-  };
-=======
-    
-
-    const openAuthSiteInBrowser = () => WebBrowser.openBrowserAsync('https://api2.callmebot.com/txt/login.php');
-
-    const setup = (props) => {
-      return (
-      <ScrollView style={{flex: 1, marginTop:'20%'}}>
-            <View style={{marginTop: '2%', marginBottom: '2%'}}>
-                <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
-                <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
-                <Button title="Authenticate" color="#841584" onPress={openAuthSiteInBrowser} />
-            </View>
-            <Button
-                  title="Proceed"
-                  color="#841584"
-                  onPress={() => props.navigation.navigate('meow')}
-                />
-      </ScrollView>);
-    };
->>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
 
   //TODO: Contacts Screen
 
@@ -93,7 +41,6 @@ export default function App() {
         />
       </ScrollView>
     );
-<<<<<<< HEAD
   };
 
   //TODO: Contacts Screen
@@ -111,6 +58,4 @@ export default function App() {
       </NavigationContainer>
     </SafeAreaProvider>
   );
-=======
->>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
 }
