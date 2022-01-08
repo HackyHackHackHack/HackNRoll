@@ -4,23 +4,33 @@ import axios from 'axios';
 const baseUrl = 'https://api.callmebot.com';
 
 export const sendMessage = (username, message) => {
-    sendTelegramMessage(username, message);
-    telegramCall(username, message);
+    return sendTelegramMessage(username, message) && makeTelegramCall(username, message);
 }
 
 export const sendTelegramMessage = (username, message) => {
-    //TODO: message += by user's username
-    const url = `text.php?user=${username}&text=${message}`;
-    axios
-        .get(`${baseUrl}/${url}`)
-        .then(response => console.log(response.data))
-        .catch(console.err);
+    const url = `text.php?user=${username}&text=MEOW from ${username}: ${message}`;
+    return axios
+                    .get(`${baseUrl}/${url}`)
+                    .then(response => {
+                        console.log(response.data);
+                        return response.status === 200;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        return false;
+                    });
 };
 
-export const telegramCall = (username, message) => {
-    const url = `start.php?user=${username}&text=${encodeURI(message)}&rpt=10`;
-    axios
+export const makeTelegramCall = (username, message) => {
+    const url = `start.php?user=${username}&text=${encodeURI(`MEOW from ${username} ${message}`)}&rpt=6`;
+    return axios
         .get(`${baseUrl}/${url}`)
-        .then(response => console.log(response.data))
-        .catch(console.err);
-}
+        .then(response => {
+            console.log(response.data);
+            return response.status === 200;
+        })
+        .catch(error => {
+            console.error(error);
+            return false;
+        });
+};

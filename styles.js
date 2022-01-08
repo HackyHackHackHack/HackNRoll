@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
       },
       subtitle: {
         marginTop: '10%',
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         alignSelf:"flex-start",
         textAlign: 'left',
