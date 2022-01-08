@@ -1,7 +1,5 @@
 # HackNRoll 2022 Submission
 
-![icon](https://user-images.githubusercontent.com/68603272/148631637-c4a2fe77-710d-4726-b57c-786dca3c14aa.png)
-
 ## MEOW :cat: is designed to be last word in social networking.
 
 MEOW is an app that's part of the Cat package, and for a pure annoyance and with a few authentications,
@@ -15,3 +13,5 @@ or by scanning this qr code:
 ![meow](https://user-images.githubusercontent.com/68603272/148631631-a82b7273-db22-427a-99bd-dfb41095bf7e.png)
 
 *MEOW is in no way affiliated with WUPHF.com from the Office. Patents Pending.*
+
+![icon](https://user-images.githubusercontent.com/68603272/148631637-c4a2fe77-710d-4726-b57c-786dca3c14aa.png)
