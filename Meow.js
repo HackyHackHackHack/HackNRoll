@@ -11,13 +11,13 @@ export const meow = () => {
     const [user, setUser] = React.useState(''); 
 
     const onPressDone = () => {
-        if (sendMessage(user, username, text)) {
+        if (sendMessage(user, username, text, number)) {
             Alert.alert(`Success! It has been sent to ${username}`);
         }};
 
     return (
       <SafeAreaView>
-            <Text style={styles.subsubtitle}>Note: MEOWS are too powerful for their own good. So you must wait 2 minutes before sending any MEOWs.</Text>
+            <Text style={styles.subsubtitle}>Note: MEOWS are too powerful for their own good. Wait 2 minutes before sending any MEOWs. </Text>
               <Text style={styles.subtitle}>Name you want to send under</Text>
               <TextInput
               style={styles.username}
@@ -64,6 +64,6 @@ export const meow = () => {
                 color="#841584"
                 onPress={onPressDone}
               />
-              
+              <Text style={styles.subsubtitle}>Also Note: You have to manually click 'Send SMS' on your phone after clicking MEOW.{'\n\n'}Cause Security. Boop. </Text>
     </SafeAreaView>);
   };

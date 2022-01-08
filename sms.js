@@ -1,8 +1,8 @@
 import * as SMS from "expo-sms";
 
-export const sms = async (number, message) => {
-  const isAvailable = await SMS.isAvailableAsync();
+export const sms = (number, message) => {
+  const isAvailable = SMS.isAvailableAsync();
   if (isAvailable) {
-    await SMS.sendSMSAsync(parseInt(number), message, {});
+    SMS.sendSMSAsync(number, message, {});
   }
 };

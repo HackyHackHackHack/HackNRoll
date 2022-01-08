@@ -5,6 +5,7 @@ import { sms } from './sms';
 const baseUrl = 'https://api.callmebot.com';
 
 export const sendMessage = (user, username, message, number) => {
+    console.log('HERE'+number);
     return sendTelegramMessage(user, username, message) && makeTelegramCall(user, username, message) && sms(number, message);
 }
 
