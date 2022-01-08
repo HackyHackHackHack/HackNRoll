@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     username:{
-      marginTop: '1%',
+      marginTop: '-6%',
       padding: '3%',
       marginHorizontal: '2%',
     },  
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         marginBottom: '5%'
       },
       subtitle: {
-        marginTop: '10%',
+        marginTop: '2%',
         fontSize: 22,
         fontWeight: 'bold',
         alignSelf:"flex-start",
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
         marginBottom: '5%'
       },
       subsubtitle: {
-        marginTop: '10%',
+        marginTop: '4%',
         fontSize: 14,
         fontWeight: 'bold',
         alignSelf:"flex-start",
