@@ -7,5 +7,6 @@ MEOW will send a Telegram message, Automated Voice Call, SMS all at once to your
 
 
 But why tell you about it, when we can **show** you? Contact us or Fork this repository for contribution queries and we can together build the most explosive social network ever!
+Try it out here: https://expo.dev/@vishnu.sundaresan/meow
 
 *MEOW is in no way affiliated with WUPHF.com from the Office. Patents Pending.*
