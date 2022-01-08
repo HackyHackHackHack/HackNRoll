@@ -1,13 +1,16 @@
-import { StyleSheet, TextInput, Text, Button, Keyboard } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, Keyboard, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { sendMessage } from './sendMessage';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 
-const SETUP_INSTRUCTIONS = 'Welcome to MEOW!\nTo Start, follow the link below to authenticate this CallMeBot on Telegram to allow your phone to receive calls and telegram texts\nOnce done, come back here and click on Proceed!';
+const SETUP_INSTRUCTIONS_1 = 'Welcome to MEOW!';
+const SETUP_INSTRUCTIONS_2 = '\nTo Start, follow the link below to authenticate this\nCallMeBot on Telegram to allow your phone to receive calls and telegram texts\n\nOnce done, come back here and click on Proceed!';
 
 export default function App() {
     const [text, setText] = React.useState(''); 
@@ -17,19 +20,18 @@ export default function App() {
 
     const meow = () => {
       return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView>
-                <Text style={style.subtitle}>Telegram username of recipient</Text>
+                <Text style={styles.subtitle}>Telegram username of recipient</Text>
                 <TextInput
-                style={styles.message}
+                style={styles.username}
                 textAlignVertical='top'
                 placeholder='@username'
                 value={username}
                 onChangeText={setUsername}
                 />
-                <Text style={style.subtitle}>Message to MEOW</Text>
+                <Text style={styles.subtitle}>Message to MEOW</Text>
                 <TextInput
-                style ={styles.message}
+                style={styles.message}
                 value={text}
                 multiline={true}
                 onChangeText={setText}
@@ -38,17 +40,20 @@ export default function App() {
                 <Button
                   title="MEOW"
                   color="#841584"
-                  onPress={() => sendMessage(username, text)}
+                  onPress={() => {
+                    sendMessage(username, text);
+                    Keyboard.dismiss();
+                    }}
                 />
-      </SafeAreaView>
-      </TouchableWithoutFeedback>);
+      </SafeAreaView>);
     };
     
     const setup = (props) => {
       return (
-      <ScrollView style={{flex: 1}}>
+      <ScrollView style={{flex: 1, marginTop:'20%'}}>
             <View style={{marginTop: '2%', marginBottom: '2%'}}>
-                <Text>{SETUP_INSTRUCTIONS}</Text>
+                <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
+                <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
                 <Button title="Authenticate" color="#841584" onPress={openAuthSiteInBrowser} />
             </View>
             <Button
@@ -75,13 +80,24 @@ export default function App() {
 
 const styles = StyleSheet.create({
     message: {
+      marginTop: '10%',
       height: '20%',
       padding: '3%',
       marginHorizontal: '2%',
       marginBottom: '5%'
     },
     subtitle: {
+      marginTop: '10%',
       fontSize: 24,
+      fontWeight: 'bold',
+      alignSelf:"flex-start",
+      textAlign: 'left',
+      marginLeft: '5%',
+      marginBottom: '5%'
+    },
+    subsubtitle: {
+      marginTop: '10%',
+      fontSize: 14,
       fontWeight: 'bold',
       alignSelf:"flex-start",
       textAlign: 'left',
