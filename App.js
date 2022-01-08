@@ -1,54 +1,66 @@
-import { StyleSheet, TextInput, Text, Button, Keyboard } from 'react-native';
+<<<<<<< HEAD
+import { View, Text, Button, ScrollView } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import * as WebBrowser from "expo-web-browser";
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { meow } from "./Meow";
+import { styles } from "./styles";
+import { Message } from "./sms";
+=======
+import { View, Text, Button, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { sendMessage } from './sendMessage';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { meow } from './Meow';
+import { styles } from './styles';
+>>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
 
 const Stack = createStackNavigator();
 
-const SETUP_INSTRUCTIONS = 'Welcome to MEOW!\nTo Start, follow the link below to authenticate this CallMeBot on Telegram to allow your phone to receive calls and telegram texts\nOnce done, come back here and click on Proceed!';
+const SETUP_INSTRUCTIONS_1 = "Welcome to MEOW!";
+const SETUP_INSTRUCTIONS_2 =
+  "\nTo Start, follow the link below to authenticate this\nCallMeBot on Telegram to allow your phone to receive calls and telegram texts\n\nOnce done, come back here and click on Proceed!";
 
 export default function App() {
-    const [text, setText] = React.useState(''); 
-    const [username, setUsername] = React.useState(''); 
+<<<<<<< HEAD
+  const openAuthSiteInBrowser = () =>
+    WebBrowser.openBrowserAsync("https://api2.callmebot.com/txt/login.php");
+
+  const setup = (props) => {
+    return (
+      <ScrollView style={{ flex: 1, marginTop: "20%" }}>
+        <View style={{ marginTop: "2%", marginBottom: "2%" }}>
+          <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
+          <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
+          <Button
+            title="Authenticate"
+            color="#841584"
+            onPress={openAuthSiteInBrowser}
+          />
+        </View>
+        <Button
+          title="Proceed"
+          color="#841584"
+          onPress={() => props.navigation.navigate("meow")}
+        />
+      </ScrollView>
+    );
+  };
+=======
+    
 
     const openAuthSiteInBrowser = () => WebBrowser.openBrowserAsync('https://api2.callmebot.com/txt/login.php');
 
-    const meow = () => {
-      return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView>
-                <Text style={style.subtitle}>Telegram username of recipient</Text>
-                <TextInput
-                style={styles.message}
-                textAlignVertical='top'
-                placeholder='@username'
-                value={username}
-                onChangeText={setUsername}
-                />
-                <Text style={style.subtitle}>Message to MEOW</Text>
-                <TextInput
-                style ={styles.message}
-                value={text}
-                multiline={true}
-                onChangeText={setText}
-                placeholder='Message'
-                />
-                <Button
-                  title="MEOW"
-                  color="#841584"
-                  onPress={() => sendMessage(username, text)}
-                />
-      </SafeAreaView>
-      </TouchableWithoutFeedback>);
-    };
-    
     const setup = (props) => {
       return (
-      <ScrollView style={{flex: 1}}>
+      <ScrollView style={{flex: 1, marginTop:'20%'}}>
             <View style={{marginTop: '2%', marginBottom: '2%'}}>
-                <Text>{SETUP_INSTRUCTIONS}</Text>
+                <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
+                <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
                 <Button title="Authenticate" color="#841584" onPress={openAuthSiteInBrowser} />
             </View>
             <Button
@@ -58,34 +70,47 @@ export default function App() {
                 />
       </ScrollView>);
     };
+>>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
 
-   //TODO: Contacts Screen
+  //TODO: Contacts Screen
 
+  const setup = (props) => {
     return (
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="setup" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="setup" component={setup} />
-            <Stack.Screen name="meow" component={meow}/>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
+      <ScrollView style={{ flex: 1, marginTop: "20%" }}>
+        <View style={{ marginTop: "2%", marginBottom: "2%" }}>
+          <Text style={styles.subtitle}>{SETUP_INSTRUCTIONS_1}</Text>
+          <Text style={styles.subsubtitle}>{SETUP_INSTRUCTIONS_2}</Text>
+          <Button
+            title="Authenticate"
+            color="#841584"
+            onPress={openAuthSiteInBrowser}
+          />
+        </View>
+        <Button
+          title="Proceed"
+          color="#841584"
+          onPress={() => props.navigation.navigate("meow")}
+        />
+      </ScrollView>
     );
-}
+<<<<<<< HEAD
+  };
 
-const styles = StyleSheet.create({
-    message: {
-      height: '20%',
-      padding: '3%',
-      marginHorizontal: '2%',
-      marginBottom: '5%'
-    },
-    subtitle: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      alignSelf:"flex-start",
-      textAlign: 'left',
-      marginLeft: '5%',
-      marginBottom: '5%'
-    }
-  });
+  //TODO: Contacts Screen
+
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="setup"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="setup" component={setup} />
+          <Stack.Screen name="meow" component={meow} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+=======
+>>>>>>> e033e0bf8b6232af0d247acc9549bd09324d310e
+}
